@@ -79,10 +79,10 @@ void Student_pass()
         system("cls");
         Stdnt_reg();
         break;
-   /* case 2:
+    case 2:
         system("cls");
         Stdnt_login();
-        break; */
+        break;
     case 3:
         system("cls");
         main();
@@ -137,9 +137,9 @@ int main()
         system("cls");
         Student_pass();
         break;
-   /* case 2:
+    case 2:
         Admin_pass();
-        break; */
+        break;
     case 3:
         exit(0);
 

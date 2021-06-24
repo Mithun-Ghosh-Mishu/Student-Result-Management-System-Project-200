@@ -137,9 +137,9 @@ int main()
         system("cls");
         Student_pass();
         break;
-   /* case 2:
+    case 2:
         Admin_pass();
-        break; */
+        break;
     case 3:
         exit(0);
 

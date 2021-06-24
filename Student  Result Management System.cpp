@@ -126,7 +126,7 @@ int main()
 
     int choice;
     cout<<"\t\t\t\t\t           1.Student"<<endl<<endl;
-    cout<<"\t\t\t\t\t           2.Admin"<<endl<<endl;
+    //cout<<"\t\t\t\t\t           2.Admin"<<endl<<endl;
     cout<<"\t\t\t\t\t           3.Close Application"<<endl<<endl;
     cout<<"\t\t\t\t\t           Choice Your Option: ";
     cin>>choice;

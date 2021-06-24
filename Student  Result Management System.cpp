@@ -79,10 +79,10 @@ void Student_pass()
         system("cls");
         Stdnt_reg();
         break;
-   /* case 2:
+    case 2:
         system("cls");
         Stdnt_login();
-        break; */
+        break;
     case 3:
         system("cls");
         main();

@@ -124,6 +124,8 @@ void Stdnt_reg()
     file.close();
     cout<<"\t\t\t\t\t\t   Registration successfull"<<endl<<endl;
 
+    After_reg();
+
 }
 //-----------------------------------------------------------------    ----End Of Student Registration Part--------------------------------------------------------------------------------------------
 
@@ -178,7 +180,7 @@ void Stdnt_login()
                 Stdnt_login();
                 break;
             case 2:
-                exit();
+                exit(0);
             }
 
         }

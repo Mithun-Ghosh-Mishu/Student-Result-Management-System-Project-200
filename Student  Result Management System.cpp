@@ -2,6 +2,7 @@
 using namespace std;
 void  Student_pass();
 void Stdnt_login();
+void Student_Panel();
 int main();
 /*                                                             #################################
                                                                 #          This Part For Login Boolean Function     #
@@ -143,7 +144,7 @@ void Stdnt_login()
         cout<<"\t\t\t\t\t\t   Successfulluy Logged In"<<endl;
 
         system("cls");
-        //Student_Panel();
+        Student_Panel();
     }
     else
     {
@@ -185,10 +186,6 @@ void Stdnt_login()
     }
 }
 //-----------------------------------------------------------------------------End Of Student Login Part--------------------------------------------------------------------------------------------
-
-
-
-
 
 
 
@@ -260,6 +257,60 @@ void Student_pass()
 }
 //-----------------------------------------------------------------------------End Of Student_Pass Part--------------------------------------------------------------------------------------------
 
+
+void Student_Panel()
+{
+      cout<<endl<<endl<<endl;
+
+    cout<<"\t\t\t       ##############################################################"<<endl;
+    cout<<endl;
+    cout<<"\t\t\t\t\t         Welcome To Student Panel"<<endl;
+    cout<<endl;
+    cout<<"\t\t\t       ##############################################################"<<endl;
+    cout<<endl<<endl;
+
+    cout<<"\t\t\t\t\t          1. See Overall Your Result."<<endl<<endl;
+    cout<<"\t\t\t\t\t          2. Go to Previous Menu."<<endl<<endl;
+    cout<<"\t\t\t\t\t          3. Go to  Main Menu."<<endl<<endl;
+    cout<<"\t\t\t\t\t          4. Close Application!"<<endl<<endl;
+    int Ch;
+    cout<<"\t\t\t\t\t          Choice Your Option:  ";
+    cin>>Ch;
+    switch(Ch)
+    {
+    case 1:
+        system("cls");
+//        Overall_Result();
+        break;
+    case 2:
+        system("cls");
+        Student_pass();
+        break;
+    case 3:
+        system("cls");
+        main();
+        break;
+    case 4:
+        break;
+    default:
+        cout<<"\n\t\t\t\t\t           Invalid Choice!\n\n\t\t\t\           For Choice Again Enter 1 Or Enter 0 For Main Menu."<<endl;
+        int c;
+        cout<<"\n\t\t\t\t\t           Enter 1/0: ";
+        cin>>c;
+        switch(c)
+        {
+        case 1:
+            system("cls");
+            Student_Panel();
+            break;
+        case 2:
+            break;
+        }
+    }
+
+}
+
+// --------------------End Of Student Panel-----------------------------------------
 
 
 

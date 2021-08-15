@@ -3,7 +3,7 @@
 using namespace std;
 void  Student_pass();
 void Stdnt_login();
-void Student_Panel();
+void  Student_Panel();
 void Admin_Login();
 int main();
 /*                                                             #################################
@@ -14,7 +14,6 @@ bool IsLoggedIn()
 {
     const int maxpasslength = 8;
     string username, usrnm,password, pss;
-
     char ch, pass[maxpasslength];
     int charposition = 0;
 
@@ -649,6 +648,8 @@ void Add_Result()
 
 
 
+
+
 /*                                                                     #################################
                                                                        #    Modify_Result    Part      #
                                                                        #################################  */
@@ -740,6 +741,263 @@ void Modify_Result()
 //                                                                       --------------------End Of Result Modifying Part-----------------------------------------------------------------------------------------
 
 
+/*                                                                     #################################
+                                                                       # Delete_record   Part          #
+                                                                       #################################  */
+
+void Delete_Any_Record()
+{
+
+    cout<<endl<<endl<<endl;
+    cout<<"                                      #######################################################################"<<endl;
+    cout<<"                                      #                                                                     #"<<endl;
+    cout<<"                                      #  For Delete Record Please Follow The Instruction                    #"<<endl;
+    cout<<"                                      #                                                                     #"<<endl;
+    cout<<"                                      #  If Delete Any Student Result  Please Enter Student Id Number(.csv) #"<<endl;
+    cout<<"                                      #                                                                     #"<<endl;
+    cout<<"                                      #  Or Delete UserName From DataBase Enter Username(.txt)              #"<<endl;
+    cout<<"                                      #                                                                     #"<<endl;
+    cout<<"                                      #######################################################################"<<endl<<endl<<endl;
+
+    int ss;
+    char file[100];
+    cout<<"\n\t\t\t\t         Enter File Name You Want To Delete  :  ";
+    scanf(" %[^\n]s",file);
+
+
+    ss=remove(file);
+
+    if(ss==0)
+    {
+        int c;
+        cout<<"\n\n\t\t\t\t                    File Deleted Successfuly."<<endl;
+        cout<<"\n\n\t\t\t\t            Enter 1 For Admin Panel Or 0 for Main Menu"<<endl<<endl;
+        cout<<"\t\t\t\t                         Enter 0/1 : ";
+        cin>>c;
+        if(c==1)
+        {
+            system("cls");
+            Admin_Login();
+        }
+        else
+        {
+            system("cls");
+            main();
+        }
+    }
+    else
+    {
+        cout<<"\n\n\t\t\t\t                        File Not Found!"<<endl;
+        int c;
+        cout<<"\n\t\t\t\t           Enter 1 For Try Again Or 0 for Admin Panel"<<endl<<endl;
+        cout<<"\t\t\t\t                        Enter 0/1 : ";
+        cin>>c;
+        if(c==1)
+        {
+            system("cls");
+            Delete_Any_Record();
+        }
+        else
+        {
+            system("cls");
+            Admin_Login();
+        }
+    }
+
+}
+
+//----------------------------------------------------------------------------End Of Change_Delete Part------------------------------------------------------------------------------------------------------------
+
+
+
+
+/*                                                                     #################################
+                                                                       #        Admin_Pass_cng   Part  #
+                                                                       #################################  */
+
+void Change_Admin_Pass()
+{
+    cout<<endl<<endl<<endl;
+    cout<<"                                      #######################################################"<<endl;
+    cout<<"                                      #                                                     #"<<endl;
+    cout<<"                                      #  For Change Password Please Follow The Instruction  #"<<endl;
+    cout<<"                                      #                                                     #"<<endl;
+    cout<<"                                      #######################################################"<<endl<<endl<<endl;
+
+    const int maxpasslength = 8;
+    char ch, pass[maxpasslength];
+    int charposition = 0;
+    string old_pass;
+
+    cout<<"\n\t\t\t\t                 Enter Your Old Password: ";
+
+    //Start Password Handling Part
+
+    while(1)
+    {
+
+        ch = getch();
+        if(ch==13)  //if user Hits ENTER BUTTON
+        {
+
+            break;
+
+        }
+        else if(ch==0)   //if user enter backspace
+        {
+
+            if(charposition > 0)
+            {
+                charposition--;
+                pass[charposition] = '\0';
+                printf("\b \b");
+            }
+
+        }
+        else if(ch == 31 || ch == 9)    //if user enter Space / Tab
+        {
+
+            continue;
+        }
+        else
+        {
+
+            if(charposition<maxpasslength)
+            {
+                pass[charposition] = ch;
+                charposition++;
+                cout<<"*";
+            }
+            else
+            {
+                cout<<"Your Password Length Exceeds Maximum Password Length"<<endl;
+                break;
+            }
+        }
+
+    }
+    pass[charposition] = '\0';
+    old_pass = pass;
+
+    ifstream pas;
+    pas.open("Admin_Pass.txt");
+    string psrd;
+    getline(pas,psrd);
+    pas.close();
+
+    if(old_pass==psrd)
+    {
+
+        string cc;
+        ofstream ps;
+
+        const int maxpasslength = 8;
+        char ch, pass[maxpasslength];
+        int charposition = 0;
+
+        ps.open("Admin_Pass.txt",ios::trunc);
+
+        cout<<"\n\n\t\t\t\t                 Enter New Pass: ";
+
+        //Start Password Handling Part
+
+        while(1)
+        {
+
+            ch = getch();
+            if(ch==13)  //if user Hits ENTER BUTTON
+            {
+
+                break;
+
+            }
+            else if(ch==0)   //if user enter backspace
+            {
+
+                if(charposition > 0)
+                {
+                    charposition--;
+                    pass[charposition] = '\0';
+                    printf("\b \b");
+                }
+
+            }
+            else if(ch == 31 || ch == 9)    //if user enter Space / Tab
+            {
+
+                continue;
+            }
+            else
+            {
+
+                if(charposition<maxpasslength)
+                {
+                    pass[charposition] = ch;
+                    charposition++;
+                    cout<<"*";
+                }
+                else
+                {
+                    cout<<"Your Password Length Exceeds Maximum Password Length"<<endl;
+                    break;
+                }
+            }
+
+        }
+        pass[charposition] = '\0';
+        cc = pass;
+        ps<<cc;
+        ps.close();
+        //End of Password Handling Part
+
+
+
+
+        cout<<endl<<endl;
+        cout<<"\n\t\t\t\t              Successfully Password Change"<<endl;
+        int c;
+        cout<<"\n\t\t\t\t            Enter 1 for main menu or 0 for exit: ";
+        cin>>c;
+        if(c=1)
+        {
+            system("cls");
+            main();
+
+        }
+        else
+        {
+            exit(0);
+        }
+
+    }
+    else
+    {
+
+        cout<<"\n\t\t\t\t                       Invalid Password!"<<endl;
+        cout<<"\n\t\t\t\t              Enter 1 For Retry Or 0 For Main Menu"<<endl;
+        int c;
+        cout<<"\n\t\t\t\t                       Enter 0/1 : ";
+        cin>>c;
+        if(c=1)
+        {
+            system("cls");
+            Change_Admin_Pass();
+
+        }
+        else
+        {
+            system("cls");
+            Admin_Login();
+        }
+
+    }
+
+}
+//--------------------------------------------------------------------------End Of Change_Admin_Pass Part------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 /*                                                                     #################################
                                                                        # Admin_Login  Part             #
@@ -776,11 +1034,11 @@ void Admin_Login()
         break;
     case 3:
         system("cls");
-       // Delete_Any_Record();
+        Delete_Any_Record();
         break;
     case 4:
         system("cls");
-       // Change_Admin_Pass();
+        Change_Admin_Pass();
         break;
     case 5:
         system("cls");
